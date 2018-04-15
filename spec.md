@@ -3,7 +3,7 @@
 Inspired by [MessagePack](https://msgpack.org).
 
 format name | first byte (in binary) | first byte (in hex) | first byte (in decimal)
------------ | ---------------------- | ------------------- | -
+:----------- | :---------------------- | :------------------- | :-
 positive fixint | 00xx xxxx | 0x00–0x3f | 0–63
 nil | 0100 0000 | 0x40 | 64
 collection end | 0100 0001 | 0x41 | 65
