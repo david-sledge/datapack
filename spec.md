@@ -47,7 +47,9 @@ Signed integers of up to 8 bytes.
 ##### Floating Points
 Single and double precision.
 ### Bin
-This represents raw binary data.  Fixbin, bin 8, 16, and 32.  This data type is also used to represent property and class local names (see below).
+This represents raw binary data.  Fixbin, bin 8, 16, and 32.  This data type can also be used to represent property and class local names (see below).
+### String
+This represents a UTF-8 string.  Fixstring, string 8, 16, and 32.  This data type can also be used to represent property and class local names (see below).
 ### Collections
 #### Sequence
 Sequence of any values; numbers, booleans, nil, sequences, assortments, binary data, and/or objects.  Sequences support an optional class name.
@@ -67,6 +69,6 @@ A qualified name consists of an optional namespace name and a required local nam
 #### Namespace
 Fixnamespace, namespace 8, 16, and 32.  UTF-8
 #### Collection End
-Marks the end of the current sequence, object, or assortment.  Required.
+Marks the end of the current sequence, object, or assortment.  Required for every collection.
 #### No Key/Value Format
 *TBD*
