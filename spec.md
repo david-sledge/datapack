@@ -29,7 +29,7 @@ sequence | 0101 0100 | 0x54 | 84
 assortment | 0101 0101 | 0x55 | 85
 object | 0101 0110 | 0x56 | 86
 no key/value | 0101 0111 | 0x57 | 87
-unused | 0101 1000–0101 1111 | 0x58–0x5f | 88–95
+*unused* | 0101 1000–0101 1111 | 0x58–0x5f | 88–95
 fixbin | 011x xxxx | 0x60–0x7f | 96–127
 fixstring | 100x xxxx | 0x80–0x9f | 128–159
 fixnamespace | 101x xxxx | 0xa0–0xbf | 160–191
@@ -69,3 +69,4 @@ Fixnamespace, namespace 8, 16, and 32.  UTF-8
 #### Collection End
 Marks the end of the current sequence, object, or assortment.  Required.
 #### No Key/Value Format
+*TBD*
