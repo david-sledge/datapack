@@ -71,8 +71,8 @@ The class name byte is followed by a qualified name.
 #### Qualified Name
 A qualified name consists of an optional namespace name and a required local name.  The local name is represented by binary data block and itself represents a UTF-8 string.
 #### Namespace
-Fixnamespace, namespace 8, 16, and 32.  UTF-8
+Fixnamespace, namespace 8, 16, and 32. UTF-8 encoding.
 #### Collection End
 Marks the end of the current sequence, object, or assortment.  Required for every collection.
 #### No Key/Value Format
-*TBD*
+This is a special format that represents the that a value lacks a key or that a key is not mapped to a value. The resulting data structure is a combination of a map, array, and set all rolled into one.
