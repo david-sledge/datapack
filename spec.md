@@ -81,4 +81,4 @@ An object is a series of zero or more qualified name/value pairs. Nil may be use
 Fixnamespace, namespace 8, 16, and 32. UTF-8 encoding.
 
 #### Collection End
-Marks the end of the current sequence, object, or dictionary.  Required for every collection.
+Marks the end of the current sequence, object, or dictionary.  Required for every collection. If the collection end byte occurs after a dictionary key or object property name without a corresponding value, a nil byte is implied for the entry value.
