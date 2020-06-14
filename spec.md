@@ -30,10 +30,9 @@ namespace 16 | 0101 0101 | 0x55 | 85
 namespace 32 | 0101 0110 | 0x56 | 86
 class name | 0101 0111 | 0x57 | 87
 sequence | 0101 1000 | 0x58 | 88
-assortment | 0101 1001 | 0x59 | 89
+dictionary | 0101 1001 | 0x59 | 89
 object | 0101 1010 | 0x5a | 90
-no key/value | 0101 1011 | 0x5b | 91
-*unused* | 0101 1100–0101 1111 | 0x5c–0x5f | 92–95
+*unused* | 0101 1011–0101 1111 | 0x5b–0x5f | 91–95
 fixbin | 011x xxxx | 0x60–0x7f | 96–127
 fixstring | 100x xxxx | 0x80–0x9f | 128–159
 fixnamespace | 101x xxxx | 0xa0–0xbf | 160–191
@@ -42,37 +41,44 @@ negative fixint | 11xx xxxx | 0xc0–0xff | 192–255 (−64–−1)
 ## Value Formats
 ### Primitives
 #### Nil
-This is a unit type.  It is bottom for the specification.
+This is a unit type. It is bottom for the specification. It can be used in place of a property name of an object.
+
 #### Boolean
 Binary value of true or false.
+
 #### Numbers
 ##### Integers
 Signed integers of up to 8 bytes.
+
 ##### Floating Points
 Single and double precision.
+
 ### Bin
 This represents raw binary data.  Fixbin, bin 8, 16, and 32.  This data type can also be used to represent property and class local names (see below).
+
 ### String
 This represents a UTF-8 string.  Fixstring, string 8, 16, and 32.  This data type can also be used to represent property and class local names (see below).
+
 ### Collections
+#### Qualified name
+Qualified names are use for class names and Object property names. A qualified name consists of an optional namespace name and a required local name. The local name is represented as either a string or a binary data block.
+
+#### Class name
+A class name is indicated by the class name byte followed by a qualified name.
+
 #### Sequence
-Sequence of any values; numbers, booleans, nil, sequences, assortments, binary data, and/or objects.  Sequences support an optional class name.
-#### Assortment
-##### Assortment Element
-Key, value, or key/value pair.  Assortments can be used to represent maps, sequences, sets, or a combination thereof.  Keys and values can be any value pack type: number, boolean, nil, binary data, sequence, assortment, or objects.
+Sequence of any values; numbers, booleans, nil, strings, binary data, sequences, dictionaries, and/or objects. Sequences support an optional class name, which if specified must appear immediately after the sequence byte.
+
+#### Dictionary
+A dictionary is a series Key/value pairs. Keys and values can be any value pack type: number, boolean, nil, string, binary data, sequence, dictionary, or object.
+
 #### Object
-Objects support an optional class name.  A class name consists of an optional namespace and a required local name.  The object format byte must be followed by either a class name format byte, or a series of zero or more properties (qualified names, values, or qualified name/value pairs).  An object is terminated by a collection end format byte.  If a class name byte is supplied, it must be followed by either a UTF-8 string (represented by a binary data block) or a namespace and then a UTF-8 string.  Following the string must be a series of zero or more properties.
+An object is a series of zero or more qualified name/value pairs. Nil may be used in place of a qualified name. Objects support an optional class name, which if specified must appear immediately after the object byte.
 
 0101 0110 [0101 0100 [namespace] binary] (0 or more properties) 0100 0001
-##### Property
-Each property consists of a qualified name, a value, or a qualified name/value pair.  A qualified name is an optional namespace and a UTF-8 string (binary data block) which represents the local name.
-#### Class Name
-The class name byte is followed by a qualified name.
-#### Qualified Name
-A qualified name consists of an optional namespace name and a required local name.  The local name is represented by binary data block and itself represents a UTF-8 string.
+
 #### Namespace
 Fixnamespace, namespace 8, 16, and 32. UTF-8 encoding.
+
 #### Collection End
-Marks the end of the current sequence, object, or assortment.  Required for every collection.
-#### No Key/Value Format
-This is a special format that represents the that a value lacks a key or that a key is not mapped to a value. The resulting data structure is a combination of a map, array, and set all rolled into one.
+Marks the end of the current sequence, object, or dictionary.  Required for every collection.
