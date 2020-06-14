@@ -60,12 +60,6 @@ This represents raw binary data.  Fixbin, bin 8, 16, and 32.  This data type can
 This represents a UTF-8 string.  Fixstring, string 8, 16, and 32.  This data type can also be used to represent property and class local names (see below).
 
 ### Collections
-#### Qualified name
-Qualified names are use for class names and Object property names (see below). A qualified name consists of an optional namespace name and a required local name. The local name is represented as either a string or a binary data block.
-
-#### Class name
-A class name is indicated by the class name byte followed by a qualified name.
-
 #### Sequence
 Sequence of any values; numbers, booleans, nil, strings, binary data, sequences, dictionaries, and/or objects. Sequences support an optional class name, which if specified must appear immediately after the sequence byte.
 
@@ -77,8 +71,15 @@ An object is a series of zero or more qualified name/value pairs. Nil may be use
 
 0101 0110 [0101 0100 [namespace] binary] (0 or more properties) 0100 0001
 
-#### Namespace
+#### Collection Constructs
+##### Namespace
 Fixnamespace, namespace 8, 16, and 32. UTF-8 encoding.
 
-#### Collection End
+##### Qualified name
+Qualified names are use for class names and Object property names (see below). A qualified name consists of an optional namespace name and a required local name. The local name is represented as either a string or a binary data block.
+
+##### Class name
+A class name is indicated by the class name byte followed by a qualified name.
+
+##### Collection End
 Marks the end of the current sequence, object, or dictionary.  Required for every collection. If the collection end byte occurs after a dictionary key or object property name without a corresponding value, a nil byte is implied for the entry value.
