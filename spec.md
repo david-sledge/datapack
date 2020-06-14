@@ -61,22 +61,22 @@ This represents a UTF-8 string.  Fixstring, string 8, 16, and 32.  This data typ
 
 ### Collections
 #### Sequence
-Sequence of any values; numbers, booleans, nil, strings, binary data, sequences, dictionaries, and/or objects. Sequences support an optional class name, which if specified must appear immediately after the sequence byte.
+Sequence of any values; numbers, booleans, nil, strings, binary data, sequences, dictionaries, and/or objects. Sequences support an optional class name (see below), which if specified must appear immediately after the sequence byte. A sequence is terminated with a collection end byte (see below).
 
 #### Dictionary
-A dictionary is a series Key/value pairs. Keys and values can be any value pack type: number, boolean, nil, string, binary data, sequence, dictionary, or object.
+A dictionary is a series Key/value pairs. Keys and values can be any value pack type: number, boolean, nil, string, binary data, sequence, dictionary, or object. A dictionary is terminated with a collection end byte (see below).
 
 #### Object
-An object is a series of zero or more qualified name/value pairs. Nil may be used in place of a qualified name. Objects support an optional class name, which if specified must appear immediately after the object byte.
+An object is a series of zero or more qualified name (see below)/value pairs. Nil may be used in place of a qualified name. Objects support an optional class name (see below), which if specified must appear immediately after the object byte. An object is terminated with a collection end byte (see below).
 
 0101 0110 [0101 0100 [namespace] binary] (0 or more properties) 0100 0001
 
 #### Collection Constructs
 ##### Namespace
-Fixnamespace, namespace 8, 16, and 32. UTF-8 encoding.
+Fixnamespace, namespace 8, 16, and 32. UTF-8 encoding. Specifies the namespace name of a qualified name.
 
 ##### Qualified name
-Qualified names are use for class names and Object property names (see below). A qualified name consists of an optional namespace name and a required local name. The local name is represented as either a string or a binary data block.
+Qualified names are use for class names and Object property names. A qualified name consists of an optional namespace name and a required local name. The local name is represented as either a string or a binary data block.
 
 ##### Class name
 A class name is indicated by the class name byte followed by a qualified name.
