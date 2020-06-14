@@ -54,14 +54,14 @@ Signed integers of up to 8 bytes.
 Single and double precision.
 
 ### Bin
-This represents raw binary data.  Fixbin, bin 8, 16, and 32.  This data type can also be used to represent property and class local names (see below).
+This represents raw binary data.  Fixbin, bin 8, 16, and 32.  This data type can also be used to the local name of a qualified name (see below).
 
 ### String
 This represents a UTF-8 string.  Fixstring, string 8, 16, and 32.  This data type can also be used to represent property and class local names (see below).
 
 ### Collections
 #### Qualified name
-Qualified names are use for class names and Object property names. A qualified name consists of an optional namespace name and a required local name. The local name is represented as either a string or a binary data block.
+Qualified names are use for class names and Object property names (see below). A qualified name consists of an optional namespace name and a required local name. The local name is represented as either a string or a binary data block.
 
 #### Class name
 A class name is indicated by the class name byte followed by a qualified name.
